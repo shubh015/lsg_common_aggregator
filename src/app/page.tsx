@@ -1,3 +1,4 @@
+import HomePageTemplate from '@/design-systems/Templates/HomePageTemplate';
 import { Metadata } from 'next'
 
 
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 
 const HomePage: React.FC = () => {
   return (
-   <div className='text-amber-300'>
-    Welcome
+   <div className='text-amber-300' >
+     <HomePageTemplate/>
    </div>
     
   );
