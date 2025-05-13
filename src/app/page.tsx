@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const HomePage: React.FC = () => {
   return (
-   <div className='text-amber-300' >
+   <div className='text-amber-300 w-[96%] mx-auto' >
      <HomePageTemplate/>
    </div>
     

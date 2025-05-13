@@ -1,6 +1,6 @@
 
 export type TabItem = {
-  label: string;
+  label?: string;
   href: string;
   className?: string;
 };
