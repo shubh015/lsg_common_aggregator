@@ -1,28 +1,33 @@
-import Image from "@/design-systems/Atoms/Image";
+// import Image from "@/design-systems/Atoms/Image";
 import React from "react";
-import banner_01 from "../../../assets/images/banner_01.png";
+// import banner_01 from "../../../assets/images/banner_01.png";
+import Typography from "@/design-systems/Atoms/Typography";
 
 const Banner: React.FC = () => {
   return (
-    <div className="banner_wrp flex">
-      <div className="bnr_left">
-        <h4>Your Journey to Tomorrow Begins Here</h4>
-        <h1>Explore the Frontiers of Artificial Intelligence</h1>
-        <h6>
+    <div className="banner_wrp flex my-20">
+      <div className="bnr_left flex flex-col gap-y-2.5 w-2/4">
+        <Typography size="h6" variant="condensed" className="!text-[#525252]">
+          Your Journey to Tomorrow Begins Here
+        </Typography>
+        <Typography variant="condensed" size="h1">
+          Explore the Frontiers of Artificial Intelligence
+        </Typography>
+        <Typography variant="regular" size="paragraph" className="!text-[#525252]">
           Welcome to the epicenter of AI innovation. FutureTech AI News is your
           passport to a world where machines think, learn, and reshape the
           future. Join us on this visionary expedition into the heart of AI.
-        </h6>
+        </Typography>
       </div>
       <div className="bnr_right">
-        <Image
+        {/* <Image
           ImageclassName="rounded-full relative"
           alt=""
           className="!h-full !w-full"
           height={1000}
           src={banner_01 || ""}
           width={1000}
-        />
+        /> */}
       </div>
     </div>
   );

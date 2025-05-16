@@ -19,6 +19,10 @@
   background: #171717;
 }
 
+.container-96 {
+  @apply w-[96%] mx-auto;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
