@@ -23,8 +23,6 @@ const BlogDetailPage: React.FC = () => {
         authorName="Ritesh Sharma"
         onShare={handleShare}
         onSave={handleSave}
-        // Optional: Add a hero image
-        // heroImage="/path/to/hero-image.jpg"
       />
     </div>
   );
