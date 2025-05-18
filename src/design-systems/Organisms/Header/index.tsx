@@ -2,12 +2,13 @@ import React from "react";
 import Button from "@/design-systems/Atoms/Button";
 import Image from "@/design-systems/Atoms/Image";
 import logo from "../../../assets/images/logo.png";
+import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Landing", href: "#", active: true },
   { label: "Account", href: "#" },
   { label: "Work", href: "#" },
-  { label: "Blog", href: "#" },
+  { label: "Blog", href: "/blogs" },
 ];
 
 const baseLinkClass = "font-medium focus:outline-hidden transition-colors ";
@@ -84,7 +85,7 @@ const Header: React.FC = () => {
         >
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:mt-0 sm:ps-5">
             {NAV_ITEMS.map(({ label, href, active }) => (
-              <a
+              <Link
                 key={label}
                 href={href}
                 className={`${baseLinkClass} ${
@@ -93,7 +94,7 @@ const Header: React.FC = () => {
                 aria-current={active ? "page" : undefined}
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

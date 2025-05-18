@@ -4,6 +4,17 @@ export interface CardProps {
     title?: string;
     description?: string;
     updatedAt?: string;
-    children?: React.ReactNode; // for footer content like buttons, badges
+    author?: string;
+    category?: string;
+    stats?: {
+      likes: number;
+      comments: number;
+      shares: number;
+    };
+    buttonText?: string;
+    onButtonClick?: () => void;
+    layout?: "blog" | "news";
+    children?: React.ReactNode;
     className?: string;
   }
+  

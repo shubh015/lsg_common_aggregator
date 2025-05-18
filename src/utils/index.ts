@@ -71,3 +71,28 @@ export const cardData = [
     updatedAt: "5 mins ago",
   },
 ];
+
+// utils/scrollspyData.ts
+
+export const scrollspyItems = [
+  {
+    id: "item-1",
+    title: "Introduction",
+    children: [
+      { id: "item-1-1", title: "AI Overview" },
+      { id: "item-1-2", title: "Applications" },
+    ],
+  },
+  {
+    id: "item-2",
+    title: "Predictive Analytics",
+  },
+  {
+    id: "item-3",
+    title: "Conclusion",
+    children: [
+      { id: "item-3-1", title: "Future Outlook" },
+      { id: "item-3-2", title: "References" },
+    ],
+  },
+];
