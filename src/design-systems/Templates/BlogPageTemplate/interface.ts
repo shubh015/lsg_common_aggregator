@@ -44,4 +44,14 @@ export interface BlogStats {
      * Hero image URL for header background
      */
     heroImage?: string;
+    
+    /**
+     * Callback for share button click
+     */
+    onShare?: () => void;
+    
+    /**
+     * Callback for save button click
+     */
+    onSave?: () => void;
   }

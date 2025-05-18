@@ -5,7 +5,7 @@ import NextImage from 'next/image'
 // import Skeleton from '../Skeleton'
 
 import { ImageElementProps } from './interface'
-import useToggle from '@/hooks/useToggle'
+// import { useThemeToggle } from '@/hooks/useThemeToggle'
 
 // import useToggle from 'hooks/useToggle'
 
@@ -19,9 +19,9 @@ const Image: React.FC<ImageElementProps> = ({
   onClick,
   style,
   ImageclassName = '',
-  imageLoading = true,
+  // imageLoading = true,
 }) => {
-  const [isLoaded, turnOn] = useToggle()
+  // const [isLoaded, turnOn] = useThemeToggle()
   const classNames = [`relative flex h-full w-full justify-center `, className].join(' ')
 
   return (
@@ -42,18 +42,11 @@ const Image: React.FC<ImageElementProps> = ({
                   style={style}
                   width={width}
                   onClick={onClick}
-                  onError={turnOn}
-                  onLoadingComplete={turnOn}
+                  // onError={turnOn}
+                  // onLoadingComplete={turnOn}
                 />
               }
 
-              {!isLoaded && imageLoading && (
-                <>
-                  {/* <SpinnerCard
-                    className={`absolute left-0  right-0 top-0 w-auto bg-neutral-700  ${ImageclassName}  ${loadingClassName}`}
-                  /> */}
-                </>
-              )}
             </div>
           )}
         </div>

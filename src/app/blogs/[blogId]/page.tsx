@@ -1,8 +1,17 @@
-import Button from '@/design-systems/Atoms/Button'
-import BlogPageTemplate from '@/design-systems/Templates/BlogPageTemplate'
-import React from 'react'
+import BlogPageTemplate from "@/design-systems/Templates/BlogPageTemplate";
+import React from "react";
 
 const BlogDetailPage: React.FC = () => {
+  const handleShare = () => {
+    // Add share functionality here
+    console.log("Sharing blog post");
+    // Example: window.navigator.share({ title: 'Blog post', url: window.location.href });
+  };
+
+  const handleSave = () => {
+    // Add save functionality here
+    console.log("Saving blog post");
+  };
   return (
     <div>
       <BlogPageTemplate
@@ -12,15 +21,13 @@ const BlogDetailPage: React.FC = () => {
         category="Healthcare"
         readingTime="10 mins"
         authorName="Ritesh Sharma"
+        onShare={handleShare}
+        onSave={handleSave}
         // Optional: Add a hero image
         // heroImage="/path/to/hero-image.jpg"
-      >
-        {/* Optional: Add action buttons as children */}
-        <Button variant="outlined" size="small">Share</Button>
-        <Button variant="outlined" size="small">Save</Button>
-      </BlogPageTemplate>
+      />
     </div>
-  )
-}
+  );
+};
 
-export default BlogDetailPage
+export default BlogDetailPage;

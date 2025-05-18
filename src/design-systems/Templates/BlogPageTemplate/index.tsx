@@ -4,9 +4,10 @@ import { cardData, scrollspyItems } from "@/utils";
 import ScrollspyNav from "@/design-systems/Molecules/ScrollspyNav";
 import Typography from "@/design-systems/Atoms/Typography";
 import { BlogTemplateProps } from "./interface";
+import Image from "@/design-systems/Atoms/Image";
 
-const BlogPageTemplate: React.FC<BlogTemplateProps> = ({ 
-  stats, 
+const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
+  stats,
   children,
   title = "The Rise of Artificial Intelligence in Healthcare",
   publicationDate = "21-05-2025",
@@ -14,6 +15,8 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
   readingTime = "10 mins",
   authorName = "Ritesh Sharma",
   heroImage,
+  onShare,
+  onSave,
 }) => {
   const renderStats = () =>
     stats ? (
@@ -25,27 +28,31 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
     ) : null;
 
   return (
-    <div className="detailPage_wrp flex flex-col gap-8 bg-black text-white pb-8">
+    <div className="flex flex-col gap-8 bg-white dark:bg-black text-black dark:text-white pb-8 w-full">
       {/* Hero Section */}
-      <div className="relative h-80 bg-gradient-to-b from-purple-700/30 to-black/80 flex items-center justify-center">
+      <div className="relative h-80 bg-gradient-to-b from-purple-200/30 to-white/80 dark:from-purple-700/30 dark:to-black/80 flex items-center justify-center w-full">
         {heroImage ? (
-          <img src={heroImage} alt={title} className="absolute inset-0 w-full h-full object-cover opacity-50" />
+          <Image
+            src={heroImage}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            height={100}
+            width={100}
+          />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-b from-purple-700/30 to-black/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-200/30 to-white/80 dark:from-purple-700/30 dark:to-black/80"></div>
         )}
         <div className="relative z-10 text-center">
           <div className="bg-purple-600 text-white rounded-full px-6 py-2 mb-6 inline-block">
             Say something
           </div>
-          <h1 className="text-3xl font-bold text-white">{title}</h1>
-          <div className="mt-4 flex justify-center">
-            {renderStats()}
-          </div>
+          <h1 className="text-3xl font-bold">{title}</h1>
+          <div className="mt-4 flex justify-center">{renderStats()}</div>
         </div>
       </div>
 
       {/* Main Content Section */}
-      <div className="blog_section_wrp max-w-7xl mx-auto w-full px-4">
+      <div className="container mx-auto w-full px-4">
         <div className="flex flex-col md:flex-row justify-between gap-8">
           {/* Scrollspy Content */}
           <div
@@ -57,35 +64,35 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
                 <div key={item.id} className="mb-8">
                   <h3
                     id={item.id}
-                    className="text-xl font-semibold text-white border-b border-gray-800 pb-2"
+                    className="text-xl font-semibold border-b border-gray-200 dark:border-gray-800 pb-2"
                   >
                     {item.title}
                   </h3>
-                  <p className="text-base text-gray-400 mt-4 leading-relaxed">
+                  <Typography size="paragraph" variant="regular" className="text-base text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">
                     Artificial Intelligence (AI) has emerged as a transformative
-                    force in the healthcare industry, reshaping patient care,
-                    diagnostics, and research. In this blog post, we explore the
-                    profound impact of AI in healthcare, from revolutionizing
-                    diagnostic accuracy to enhancing patient outcomes.
-                  </p>
+                    force in the healthcare industry...
+                  </Typography>
 
                   {item.children?.map((child) => (
-                    <div key={child.id} className="mt-6 pl-4 border-l border-gray-800">
-                      <h4
-                        id={child.id}
-                        className="text-lg font-semibold text-white"
-                      >
+                    <div
+                      key={child.id}
+                      className="mt-6 pl-4 border-l border-gray-200 dark:border-gray-800"
+                    >
+                      <h4 id={child.id} className="text-lg font-semibold">
                         {child.title}
                       </h4>
-                      <p className="text-base text-gray-400 mt-2 leading-relaxed">
-                        Artificial Intelligence (AI) has permeated virtually
-                        every aspect of our lives, and healthcare is no
-                        exception. The integration of AI in healthcare is
-                        ushering in a new era of medical practice, where
-                        machines complement the capabilities of healthcare
-                        professionals, ultimately improving patient outcomes and
-                        the efficiency of the healthcare system.
-                      </p>
+                      <Typography
+                        size="paragraph"
+                        variant="regular"
+                        className=" text-gray-600 dark:text-gray-400 mt-2 leading-relaxed"
+                      >
+                        Artificial Intelligence (AI) has emerged as a
+                        transformative force in the healthcare industry,
+                        reshaping patient care, diagnostics, and research. In
+                        this blog post, we explore the profound impact of AI in
+                        healthcare, from revolutionizing diagnostic accuracy to
+                        enhancing patient outcomes.
+                      </Typography>
                     </div>
                   ))}
                 </div>
@@ -94,74 +101,34 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
           </div>
 
           {/* Right Sidebar & Scrollspy Navigation */}
-          <div className="w-full md:w-2/5 flex flex-col gap-6 sticky top-0 self-start">
-            <div className="p-6 bg-gray-900/30 rounded-lg">
+          <aside className="w-full md:w-2/5 flex flex-col gap-6 sticky top-0 self-start">
+            <div className="p-6 bg-gray-100 dark:bg-gray-900/30 rounded-lg">
               <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <Typography
-                    className="text-gray-400"
-                    variant="condensed"
-                    size="h4"
-                  >
-                    Publication Date
-                  </Typography>
-                  <Typography className="text-white" variant="regular" size="h4">
-                    {publicationDate}
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    className="text-gray-400"
-                    variant="condensed"
-                    size="h4"
-                  >
-                    Reading Time
-                  </Typography>
-                  <Typography className="text-white" variant="regular" size="h4">
-                    {readingTime}
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    className="text-gray-400"
-                    variant="condensed"
-                    size="h4"
-                  >
-                    Category
-                  </Typography>
-                  <Typography className="text-white" variant="regular" size="h4">
-                    {category}
-                  </Typography>
-                </div>
-                <div>
-                  <Typography
-                    className="text-gray-400"
-                    variant="condensed"
-                    size="h4"
-                  >
-                    Author Name
-                  </Typography>
-                  <Typography className="text-white" variant="regular" size="h4">
-                    {authorName}
-                  </Typography>
-                </div>
+                <InfoBlock label="Publication Date" value={publicationDate} />
+                <InfoBlock label="Reading Time" value={readingTime} />
+                <InfoBlock label="Category" value={category} />
+                <InfoBlock label="Author Name" value={authorName} />
               </div>
             </div>
 
-            <div className="mt-4 flex justify-between items-center">
-              {renderStats()}
-              {children && <div className="flex gap-2">{children}</div>}
-            </div>
-
             <div className="mt-4">
+              <div className="flex justify-between items-center mb-4">
+                {renderStats()}
+                <div className="flex gap-2">
+                  <ActionButton label="Share" onClick={onShare} />
+                  <ActionButton label="Save" onClick={onSave} />
+                  {children && <div className="flex gap-2">{children}</div>}
+                </div>
+              </div>
+
               <Typography
-                className="text-gray-400 mb-2"
+                className="text-gray-600 dark:text-gray-400 mb-2"
                 variant="condensed"
                 size="h4"
               >
                 Table of Contents
               </Typography>
-              <div className="bg-gray-900 rounded-xl px-6 py-4">
+              <div className="!bg-gray-100 dark:!bg-gray-900 rounded-xl px-6 py-4">
                 <ScrollspyNav
                   items={scrollspyItems}
                   scrollspyId="scrollspy-2"
@@ -169,13 +136,13 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
                 />
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
 
       {/* Related News Section */}
-      <div className="max-w-7xl mx-auto w-full px-4 mt-12">
-        <Typography variant="regular" size="h3" className="mb-6 text-white">
+      <div className="container mx-auto w-full px-4 mt-12">
+        <Typography variant="regular" size="h3" className="mb-6">
           Similar News
         </Typography>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -187,7 +154,7 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
               title={card.title}
               description={card.description}
               updatedAt={card.updatedAt}
-              className="border-0 bg-gray-900/50 rounded-lg overflow-hidden"
+              className="border-0 !bg-gray-100 dark:!bg-gray-900/50 rounded-lg overflow-hidden"
               stats={{ likes: 245, comments: 50, shares: 20 }}
               buttonText="View Blog"
             />
@@ -197,5 +164,39 @@ const BlogPageTemplate: React.FC<BlogTemplateProps> = ({
     </div>
   );
 };
+
+const InfoBlock = ({ label, value }: { label: string; value: string }) => (
+  <div>
+    <Typography
+      className="text-gray-600 dark:text-gray-400"
+      variant="condensed"
+      size="h4"
+    >
+      {label}
+    </Typography>
+    <Typography
+      className="text-black dark:text-white"
+      variant="regular"
+      size="h4"
+    >
+      {value}
+    </Typography>
+  </div>
+);
+
+const ActionButton = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick?: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className="px-4 py-2 bg-transparent border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-black dark:text-white"
+  >
+    {label}
+  </button>
+);
 
 export default BlogPageTemplate;

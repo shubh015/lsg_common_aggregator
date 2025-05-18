@@ -6,6 +6,7 @@
 
 @tailwind utilities;
 
+@custom-variant dark (&:where(.dark, .dark *));
 /* CSS Variables for Design System */
 :root {
   /* Light mode (default) */
@@ -17,6 +18,20 @@
   --background: #171717;
   --foreground: #ededed;
   background: #171717;
+
+  
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container-96 {
@@ -41,26 +56,57 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-/* .dark {
-  --color-primary: #60a5fa;
-  --color-primary-light: #93c5fd;
-  --color-primary-dark: #3b82f6;
 
-  --color-secondary: #34d399;
-  --color-secondary-light: #6ee7b7;
-  --color-secondary-dark: #10b981;
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
 
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
 
-  --color-surface: #171717;
-  --color-surface-accent: #262626;
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px -10px theme('colors.cyan.500');
+  }
+  to {
+    box-shadow: 0 0 20px -5px theme('colors.cyan.400'), 0 0 30px -10px theme('colors.blue.500');
+  }
+}
 
-  --color-text-primary: #ededed;
-  --color-text-secondary: #d1d5db;
-  --color-text-muted: #6b7280;
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 
-  --color-border: #374151;
-  --color-divider: #262626;
-} */
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-500;
+}
