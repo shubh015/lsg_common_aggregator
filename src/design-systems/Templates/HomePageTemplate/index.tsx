@@ -1,4 +1,4 @@
-import HomepageCard from "@/design-systems/Molecules/HomepageCard";
+// import HomepageCard from "@/design-systems/Molecules/HomepageCard";
 import Banner from "@/design-systems/Organisms/Banner";
 import BlogCategories from "@/design-systems/Organisms/BlogCategories";
 // import BlogOverview from "@/design-systems/Organisms/BlogOverview.tsx";
@@ -13,7 +13,7 @@ const HomePageTemplate: React.FC = () => {
       <BlogCategories />
       {/* <BlogOverview /> */}
 
-      <HomepageCard />
+      {/* <HomepageCard /> */}
     </>
   );
 };
